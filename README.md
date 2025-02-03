@@ -53,7 +53,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 Reboot.
 
-### 
+### Initramfs
 Create a vfio profile:
 ```bash
 sudo touch /etc/modprobe.d/vfio.conf
@@ -71,7 +71,7 @@ Update initramfs
 sudo mkinticpio -p linux
 ```
 Reboot.
-
+\\
 Verify changes:
 ```bash
 lspci -k | grep -E "vfio-pci|NVIDIA"
@@ -95,7 +95,11 @@ sudo systemctl enable virtqemud
 ```
 
 Download the virtio windows drivers and import them to the virtual machine:
-
+\\
+Stable virtio-win ISO [link](https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md)
+\\
+Add the downloaded ISO to the "SATA CDROM 1" section of the vm.
+\\
 Add the both the audio device and gpu to the vm from inside the vm settings:
 ```
   Add Hardware
