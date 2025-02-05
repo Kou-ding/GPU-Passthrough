@@ -114,7 +114,12 @@ Have the network start at startup each time:
 sudo virsh net-start default
 sudo virsh net-autostart default
 ```
-
+Additional steps that might be needed:
+```bash
+sudo modprobe vfio-pci
+echo "0000:06:00.1" | sudo tee /sys/bus/pci/drivers/snd_hda_intel/unbind
+echo "0000:06:00.1" | sudo tee /sys/bus/pci/drivers/vfio-pci/bind
+```
 Download the virtio windows drivers and import them to the virtual machine:
 
 Stable virtio-win ISO [link](https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md)
